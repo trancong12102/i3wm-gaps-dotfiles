@@ -1,0 +1,91 @@
+general {
+	output_format = "i3bar"
+	colors = false
+	markup = pango
+	interval = 1
+	color_good = '#2f343f'
+	color_degraded = '#2f343f'
+	color_bad = '#2f343f'
+}
+
+order += "window_title"
+order += "sysdata temp"
+order += "sysdata cpu"
+order += "sysdata mem"
+order += "disk /"
+order += "wireless wlp3s0"
+order += "net_rate"
+order += "battery all"
+order += "backlight"
+order += "volume_status"
+order += "clock"
+
+window_title {
+    format = '[\?max_length=55&color=white {title}]'
+	cache_timeout = 0.25
+}
+
+sysdata temp {
+	format = "<span background='#ea8685'>  <span background='#e5e9f0'> Temp: {cpu_temp} °C </span> </span>"
+	cache_timeout = 1
+}
+
+sysdata cpu {
+	cpus = ['cpu']
+    format = "<span background='#f3a683'>  <span background='#e5e9f0'> CPU: {cpu_used_percent} % </span> </span>"
+	cache_timeout = 1
+}
+
+sysdata mem {
+	format = "<span background='#88c0d0'>  <span background='#e5e9f0'> RAM: {mem_used} GB </span> </span>"
+	cache_timeout = 1
+}
+
+disk "/" {
+        format = "<span background='#a1d569'>  <span background='#e5e9f0'>  %free </span> </span>"
+}
+
+wireless wlp3s0 {
+	format_up = "<span background='#b48ead'>  <span background='#e5e9f0'> %quality at %essid </span> </span>"
+	format_down = "<span background='#b48ead'>  <span background='#e5e9f0'> Disconnected </span> </span>"
+}
+
+net_rate {
+	format = "<span background='#ffb8b8'>  <span background='#e5e9f0'> Down: {down} </span>  <span background='#e5e9f0'> Up: {up} </span> </span>"
+	cache_timeout = 0.5
+}
+
+battery all {
+	last_full_capacity = true
+	format = "<span background='#a3be8c'> %status <span background='#e5e9f0'> BAT: %percentage </span> </span>"
+	format_down = ""
+	status_chr = ""
+	status_bat = ""
+	status_unk = ""
+	status_full = ""
+	path = "/sys/class/power_supply/BAT%d/uevent"
+	low_threshold = 10
+}
+
+backlight {
+	format = "<span background='#f5cd79'> ☼ <span background='#e5e9f0'> Dim: {level}% </span> </span>"
+}
+
+volume_status {
+	format = "<span background='#cf6a87'>  <span background='#e5e9f0'> Vol: {percentage}% </span> </span>"
+	format_muted = "<span background='#ebcb8b'>  <span background='#e5e9f0'> Muted </span> </span>"
+}
+
+volume master {
+	format = "<span background='#cf6a87'>  <span background='#e5e9f0'> Vol: %volume </span> </span>"
+	format_muted = "<span background='#ebcb8b'>  <span background='#e5e9f0'> Muted </span> </span>"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+clock {
+	format = "<span background='#778beb'>  <span background='#e5e9f0'> {Asia/Ho_Chi_Minh} </span> </span>"
+	format_time = "%a %H:%M:%S %d/%m/%Y"
+}
+

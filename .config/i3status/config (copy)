@@ -1,0 +1,72 @@
+general {
+        output_format = "i3bar"
+        colors = false
+        markup = pango
+        interval = 1
+        color_good = '#2f343f'
+	color_degraded = '#ebcb8b'
+	color_bad = '#ba5e57'
+}
+
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "disk /home"
+order += "wireless wlp3s0"
+order += "battery all"
+order += "volume master"
+order += "tztime local"
+
+
+cpu_temperature 0 {
+        format = "<span background='#ea8685'>  <span background='#e5e9f0'> Temp: %degrees °C </span> </span>"
+        path = "/sys/class/thermal/thermal_zone0/temp"
+}
+
+cpu_usage {
+	format = "<span background='#f3a683'>  <span background='#e5e9f0'> CPU: %usage </span> </span>"	
+}
+
+memory {
+	format = "<span background='#88c0d0'>  <span background='#e5e9f0'> RAM: %used </span> </span>"
+}
+
+disk "/" {
+        format = "<span background='#a1d569'>  <span background='#e5e9f0'>  %free </span> </span>"
+}
+
+disk "/home" {
+        format = "<span background='#f8a5c2'>  <span background='#e5e9f0'> %free </span> </span>"
+}
+
+wireless wlp3s0 {
+        format_up = "<span background='#b48ead'>  <span background='#e5e9f0'> %quality at %essid </span> </span>"
+        format_down = "<span background='#b48ead'>  <span background='#e5e9f0'> Disconnected </span> </span>"
+}
+
+battery all {
+	last_full_capacity = true
+        format = "<span background='#a3be8c'> %status <span background='#e5e9f0'> BAT: %percentage </span> </span>"
+        format_down = ""
+        status_chr = ""
+        status_bat = ""
+        status_unk = ""
+        status_full = ""
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+volume master {
+        format = "<span background='#ebcb8b'>  <span background='#e5e9f0'> Vol: %volume </span> </span>"
+        format_muted = "<span background='#ebcb8b'>  <span background='#e5e9f0'> Muted </span> </span>"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+tztime local {
+		format = "<span background='#778beb'>  <span background='#e5e9f0'> %time </span> </span>"
+		format_time = "%a %H:%M:%S %d/%m/%Y"
+}
+

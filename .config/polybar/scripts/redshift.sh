@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 ## Created by nopain2110
 
@@ -18,6 +18,7 @@ toggle() {
 	if [ $on == 0 ];
 	then
 		on=1
+		apply_temp
 	else
 		on=0
 		reset_temp
@@ -30,6 +31,7 @@ increase() {
 	if (( cur_temp < 8500 ));
 	then
 		let "cur_temp+=50"
+		apply_temp
 	fi
 }
 
@@ -39,13 +41,14 @@ decrease() {
 	if (( cur_temp > 50 ));
 	then
 		let "cur_temp-=50"
+		apply_temp
 	fi
 }
 
 print() {
 	if [ $on == 0 ];
 	then
-		echo "%{F#757575} OFF"
+		echo "%{F#66ffffff} OFF"
 	else
 		echo "%{F#ff8f00}%{F-} $cur_temp K"
 	fi
@@ -55,8 +58,6 @@ conf_file=/home/nopain2110/.config/polybar/scripts/redshift.conf
 . $conf_file
 
 mode=$1
-
-apply_temp
 
 
 if [ $mode == "p" ]; 
