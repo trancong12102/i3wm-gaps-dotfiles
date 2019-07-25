@@ -192,12 +192,12 @@ exec_always --no-startup-id feh --bg-fill -center ~/.wallpaper.jpg
 exec --no-startup-id compton -b
 exec --no-startup-id xsettingsd &
 exec --no-startup-id dunst &
+exec --no-startup-id ~/.config/i3/applets/touchpad.sh
 
 # launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 3
-gaps outer 16
-gaps inner 16
+gaps inner 4
 
