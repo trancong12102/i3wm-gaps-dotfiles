@@ -6,7 +6,7 @@ apply_temp() {
 	
 	if [ $on == 1 ];
 	then
-		redshift -P -O $cur_temp
+		hihi=$(redshift -P -O $cur_temp)
 	fi
 }
 
@@ -41,7 +41,6 @@ decrease() {
 	if (( cur_temp > 50 ));
 	then
 		let "cur_temp-=50"
-		apply_temp
 	fi
 }
 
@@ -59,6 +58,7 @@ conf_file=/home/nopain2110/.config/polybar/scripts/redshift.conf
 
 mode=$1
 
+apply_temp
 
 if [ $mode == "p" ]; 
 then 
