@@ -1,5 +1,5 @@
 # i3-dotfiles
-My dotfiles config for i3wm on ubuntu
+My dotfiles config for i3wm on ubuntu <br />
 I've wrote some special scripts:
 - polybar/scripts/redshift.sh.
 - polybar/scripts/ibus_man.sh: switch ibus input method between xkb:us::eng and Bamboo (for vietnamese typing).
