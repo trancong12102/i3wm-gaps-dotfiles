@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 ## created by nopain2110
 ## auto disable touchpad when mouse plugged 

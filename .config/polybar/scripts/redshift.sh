@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-## Created by nopain2110
+## Created by nopain
 
 apply_temp() {
 	

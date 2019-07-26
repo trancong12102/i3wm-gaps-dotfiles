@@ -37,7 +37,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
-bindsym $mod+a exec rofi -lines 12 -padding 18 -width 60 -location 0 -show run -sidebar-mode -columns 3 -font 'Noto Sans 10'
+bindsym $mod+q exec rofi -lines 12 -padding 18 -width 60 -location 0 -show run -sidebar-mode -columns 3 -font 'Noto Sans 10'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -88,7 +88,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-# bindsym $mod+a focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -185,21 +185,24 @@ bindsym $mod+r mode "resize"
 # screenshot
 
 bindsym Print exec gnome-screenshot
+bindsym Control+space exec ~/.config/polybar/scripts/ibus_man.sh s
 
 # autostart
 
 exec_always --no-startup-id feh --bg-fill -center ~/.wallpaper.jpg
 exec --no-startup-id compton -b
-exec --no-startup-id xsettingsd &
-exec --no-startup-id dunst &
-exec --no-startup-id ~/.config/i3/applets/touchpad.sh
+exec --no-startup-id xsettingsd 
+exec --no-startup-id ~/.config/i3/applets/touchpad.sh 
+exec --no-startup-id ~/.config/i3/applets/bat_man.sh 
+exec --no-startup-id ibus-daemon --xim 
 
 # launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel 3
-gaps inner 4
+gaps inner 12
+gaps outer 8
 
 # colour of border, background, text, indicator, and child_border
 client.focused              #bf616a #2f343f #d8dee8 #bf616a #d8dee8
