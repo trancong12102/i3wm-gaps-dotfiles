@@ -191,10 +191,12 @@ bindsym Control+space exec ~/.config/polybar/scripts/ibus_man.sh s
 
 exec_always --no-startup-id feh --bg-fill -center ~/.wallpaper.jpg
 exec --no-startup-id compton -b
-exec --no-startup-id xsettingsd 
-exec --no-startup-id ~/.config/i3/applets/touchpad.sh 
-exec --no-startup-id ~/.config/i3/applets/bat_man.sh 
-exec --no-startup-id ibus-daemon --xim 
+exec --no-startup-id xsettingsd  
+exec --no-startup-id ibus-daemon 
+
+# my custom script
+exec --no-startup-id ~/.config/i3/applets/touchpad.sh
+exec --no-startup-id ~/.config/polybar/scripts/battery.sh r
 
 # launch polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

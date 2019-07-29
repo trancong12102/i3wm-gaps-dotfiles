@@ -53,7 +53,7 @@ print() {
 	fi
 }
 
-conf_file=/home/nopain2110/.config/polybar/scripts/redshift.conf
+conf_file=~/.config/polybar/scripts/redshift.conf
 . $conf_file
 
 mode=$1
